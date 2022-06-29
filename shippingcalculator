@@ -1,0 +1,53 @@
+#include <stdio.h>
+int main ()
+// Programmer name is Mariia Kurko. Date Jun 4, 2022
+// The shipping rates are based on per 500 miles shipped.
+// Rates are not pro-rated, i.e., 600 miles is the same rate as 900 or 1000 miles.
+
+{
+    printf ("Global Courier Services\n");
+     
+    // Variables 
+    int miles;
+    float weight, charge;
+
+    // User enters package weight in lbs
+    printf ("Please enter the weight of the package in pounds : ");
+    scanf ("%f", &weight);
+
+    // When package weight is above 50 pounds
+    if (weight > 50.0) {
+        printf ("Undortunately, we are unable to ship packages over 50 pound. We are sorry for the inconvenience.");
+        return 0;
+    }
+
+    // Distance input
+    printf ("Plese entern the amount of miles needed for shipping : ");
+    scanf ("%d", &miles);
+
+    // Calculating mile segments
+    int mile_segment= miles/500;
+    if (miles%500 !=0) {
+        // Checkig if miles are exactly devisible by 500
+        mile_segment++;
+    }
+
+
+    // Rate of charge
+    if (weight <= 10){
+        charge = 3.00;
+    } else {
+        charge = 5.00;
+    }
+
+    // Calculations of the rate of the shipping distance of more that 1000 miles
+    float sum = charge * mile_segment;
+    if (miles > 1000) {
+        sum+= 10;
+    }
+
+    //Output
+    printf ("Here is your total charge $%.2f", sum);
+    return 0;
+
+}
